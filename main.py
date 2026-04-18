@@ -94,6 +94,8 @@ FAKE_ITEMS = {
 
 @ui.page('/')
 def index():
+    # 加这一行，禁止 body 滚动
+    ui.query('body').style('overflow: hidden')
 
     # ── 2.1 用一个字典来存放需要跨函数访问的 UI 组件 ──
     #
@@ -168,6 +170,7 @@ def index():
                 ui.label('选择左侧事项查看详情').classes(
                     'text-gray-400 text-lg mt-4'
                 )
+
 
     # ── 2.3 树节点选中事件的回调函数 ──
     #
@@ -308,9 +311,10 @@ def index():
                 # 这个 column 就是我们后续动态填充内容的容器
                 # 在 show_detail() 中通过 ref['detail_panel'] 来访问它
                 ref['detail_panel'] = ui.column().classes('w-full p-4')
-
-                # 初始显示欢迎信息
                 show_welcome()
+
+
+
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
